@@ -1,99 +1,274 @@
-Gautam Sarraf's AI Portfolio Chatbot API
-This is a Retrieval-Augmented Generation (RAG) backend API for Gautam Sarraf's Portfolio. It allows users to ask questions about Gautam's skills, experience, and projects in natural language, retrieving relevant context and generating accurate, professional responses via Google's Gemini models.
+# 🚀 Gautam Sarraf's AI Portfolio Chatbot
 
-Features
-FastAPI Backend: A lightweight, high-performance, and asynchronous API wrapper.
-Simple RAG (Retrieval-Augmented Generation) Pipeline:
-Parses and chunks Gautam's professional profile (doc/gautam_sarraf_info.txt).
-Embeds chunks using Google's modern gemini-embedding-2 model.
-Employs NumPy for calculating cosine similarity to retrieve the most contextually relevant chunks.
-Gemini 2.5 Flash Integration: Generates concise, professional, persona-driven answers based exclusively on the retrieved context.
-Conversation History Support: Retains chat history context within the API request for continuous conversations.
-CORS Configured: Preloaded with CORS middleware to allow requests from any frontend port/origin.
-Tech Stack
-Framework: FastAPI
-Data Validation: Pydantic v2
-Mathematical Operations: NumPy
-LLM/SDK: Google GenAI SDK
-ASGI Web Server: Uvicorn
+A Retrieval-Augmented Generation (RAG) powered AI chatbot built using **FastAPI** and **Google Gemini** that answers questions about **Gautam Sarraf's** skills, experience, projects, and professional background.
 
+The chatbot retrieves relevant information from a curated knowledge base and generates accurate, contextual responses using Google's latest Gemini models.
 
-Project Structure
+---
 
+## ✨ Features
 
+* **FastAPI Backend**
+
+  * High-performance and lightweight REST API.
+
+* **Retrieval-Augmented Generation (RAG)**
+
+  * Reads Gautam's professional profile from a knowledge base.
+  * Splits content into semantic chunks.
+  * Generates embeddings using **Gemini Embedding Models**.
+  * Retrieves the most relevant context using cosine similarity.
+
+* **Gemini 2.5 Flash Integration**
+
+  * Generates concise, professional, and context-aware responses.
+
+* **Conversation History Support**
+
+  * Maintains chat history for multi-turn conversations.
+
+* **CORS Enabled**
+
+  * Supports integration with React, Next.js, and other frontend frameworks.
+
+* **Portfolio-Aware AI Assistant**
+
+  * Answers questions about:
+
+    * Skills
+    * Experience
+    * Projects
+    * Technologies
+    * Education
+    * Achievements
+
+---
+
+## 🛠 Tech Stack
+
+| Category               | Technology              |
+| ---------------------- | ----------------------- |
+| Backend Framework      | FastAPI                 |
+| LLM                    | Google Gemini 2.5 Flash |
+| Embeddings             | Gemini Embedding Model  |
+| Data Validation        | Pydantic v2             |
+| Similarity Search      | NumPy                   |
+| Server                 | Uvicorn                 |
+| Environment Management | python-dotenv           |
+
+---
+
+## 📁 Project Structure
+
+```text
+portfolio-chatBot/
+│
 ├── doc/
-│   └── gautam_sarraf_info.txt  # Gautam's profile & knowledge base
-├── main.py                     # FastAPI server & route handlers
-├── util.py                     # RAG pipeline: chunking, embedding, similarity search, & LLM call
-├── requirements.txt            # Python dependencies
-├── .gitignore                  # Git ignore rules (excludes .env and __pycache__)
-└── .env                        # Local environment secrets (ignored by Git)
-Setup & Installation
-1. Clone & Navigate
-bash
+│   └── gautam_sarraf_info.txt
+│
+├── main.py
+├── util.py
+├── requirements.txt
+├── .gitignore
+├── .env
+└── README.md
+```
+
+### File Descriptions
+
+| File                     | Description                                                |
+| ------------------------ | ---------------------------------------------------------- |
+| `main.py`                | FastAPI application and API routes                         |
+| `util.py`                | RAG pipeline (chunking, embeddings, retrieval, generation) |
+| `gautam_sarraf_info.txt` | Portfolio knowledge base                                   |
+| `.env`                   | Environment variables                                      |
+| `requirements.txt`       | Python dependencies                                        |
+
+---
+
+## ⚙️ Setup & Installation
+
+### 1. Clone the Repository
+
+```bash
 git clone https://github.com/Gautam-Sarraf/portfolio-chatBot.git
 cd portfolio-chatBot
-2. Install Dependencies
-Ensure you have Python 3.10+ installed, then run:
+```
 
-bash
+### 2. Create Virtual Environment
+
+```bash
+python -m venv venv
+```
+
+Activate it:
+
+#### Windows
+
+```bash
+venv\Scripts\activate
+```
+
+#### macOS/Linux
+
+```bash
+source venv/bin/activate
+```
+
+### 3. Install Dependencies
+
+```bash
 pip install -r requirements.txt
-3. Environment Variable Configuration
-Create a .env file in the root of the project:
+```
 
-env
-GEMINI_API_KEY=your_actual_gemini_api_key_here
-(Note: .env is already configured in .gitignore to prevent secret leaks.)
+### 4. Configure Environment Variables
 
-4. Running the Server
-Start the local development server with auto-reload enabled:
+Create a `.env` file:
 
-bash
+```env
+GEMINI_API_KEY=your_gemini_api_key
+```
+
+> **Note:** `.env` is excluded from Git using `.gitignore`.
+
+---
+
+## 🚀 Running the Server
+
+Start the development server:
+
+```bash
 uvicorn main:app --reload
-The API will be available at http://127.0.0.1:8000.
+```
 
-API Endpoints
-1. Home Health Check
-Verify if the API service is up and running.
+The API will be available at:
 
-URL: /
-Method: GET
-Response:
-json
+```text
+http://127.0.0.1:8000
+```
+
+Interactive API Documentation:
+
+```text
+http://127.0.0.1:8000/docs
+```
+
+---
+
+## 📡 API Endpoints
+
+### 1. Health Check
+
+#### Endpoint
+
+```http
+GET /
+```
+
+#### Response
+
+```json
 {
   "message": "Portfolio Chatbot API Running"
 }
-2. Chat Endpoint
-Submit a question along with optional conversation history to receive an AI-generated answer.
+```
 
-URL: /chat
+---
 
-Method: POST
+### 2. Chat Endpoint
 
-Content-Type: application/json
+Ask questions about Gautam's portfolio.
 
-Request Body Schema:
+#### Endpoint
 
-json
+```http
+POST /chat
+```
+
+#### Request Body
+
+```json
 {
-  "message": "What programming languages does Gautam know?",
+  "message": "What AI projects has Gautam built?",
   "chat_history": [
     {
       "role": "user",
-      "content": "Hi, who are you?"
+      "content": "Who are you?"
     },
     {
-      "role": "model",
-      "content": "I am Gautam Sarraf's AI Portfolio Assistant. How can I help you?"
+      "role": "assistant",
+      "content": "I am Gautam Sarraf's AI Portfolio Assistant."
     }
   ]
 }
-(Note: chat_history defaults to an empty list [] if omitted.)
+```
 
-Response Body Schema:
+> `chat_history` is optional and defaults to an empty list.
 
-json
+#### Response
+
+```json
 {
-  "response": "Gautam is highly proficient in Python (his principal backend language), TypeScript, and JavaScript (ES6+)."
+  "response": "Gautam has built several AI projects including Resume Analyzer, PDF Chatbot, CP-KYC, and OT Scheduler."
 }
-3:15 PM
+```
+
+---
+
+## 🧠 How the RAG Pipeline Works
+
+```text
+User Query
+    ↓
+Generate Query Embedding
+    ↓
+Cosine Similarity Search
+    ↓
+Retrieve Top-K Context Chunks
+    ↓
+Send Context + Query to Gemini
+    ↓
+Generate Final Response
+```
+
+---
+
+## 💡 Example Questions
+
+* Who is Gautam Sarraf?
+* What technologies does Gautam work with?
+* Tell me about the Resume Analyzer project.
+* Does Gautam have experience with FastAPI?
+* What AI projects has Gautam built?
+* What frontend technologies does Gautam use?
+* Explain TeamSphere.
+
+---
+
+## 🔒 Security
+
+* API keys are stored securely using environment variables.
+* `.env` files are excluded from version control.
+* The chatbot answers only from the provided portfolio context.
+
+---
+
+## 📜 License
+
+This project is licensed under the MIT License.
+
+---
+
+## 👨‍💻 Author
+
+**Gautam Sarraf**
+
+AI Engineer | Full Stack Developer | Automation Enthusiast
+
+* Python
+* FastAPI
+* React
+* LLMs
+* RAG Systems
+* AI Agents
+* Automation
