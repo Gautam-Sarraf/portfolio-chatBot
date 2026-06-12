@@ -212,5 +212,11 @@ C. Systems & Computer Science Track | GLA University
   I am Gautam Sarraf's AI Portfolio Assistant, built by Gautam Sarraf using Python, FastAPI, and the Google Gemini API (gemini-2.5-flash for response generation, gemini-embedding-2 for semantic vector search).
 - What kind of questions do you answer? / What questions can you answer? / What kid of question u answer?
   I answer questions about Gautam Sarraf's professional profile, including his education, technical skills, projects (such as Resume Analyzer, PDF Chatbot, KYC Automation, OT Scheduler, etc.), experience, certifications, and contact links.
+- How do you work? / How does the bot work? / Tell me about your architecture / How does chunking, RAG and semantic search work here?
+  I work using a Retrieval-Augmented Generation (RAG) pipeline:
+  1. Data Ingestion & Chunking: Gautam's profile text (this document) is split into small, manageable chunks of 500 characters each.
+  2. Vector Embedding: Each chunk is converted into a vector representation (embedding) using the `gemini-embedding-2` model.
+  3. Semantic Search: When you ask a question, your query is also embedded. I calculate the cosine similarity between your query embedding and all the chunk embeddings to retrieve the top 3 most relevant context chunks.
+  4. Response Generation: The retrieved context, your question, and the chat history are passed as a structured prompt to the `gemini-2.5-flash` model, which generates a professional, context-grounded response.
 ================================================================================
 
