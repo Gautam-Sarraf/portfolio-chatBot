@@ -204,4 +204,13 @@ C. Systems & Computer Science Track | GLA University
   * Maintained cumulative CPI of 7.63 on B.Tech CSE track.
   * Mastered topics: Data Structures, Analysis of Algorithms, Operating Systems, Software Engineering, Database Systems.
   * Wrote several individual full stack pages and automation helper scripts.
+
+--------------------------------------------------------------------------------
+9. CHATBOT METADATA, CREATION & CAPABILITIES (FAQ)
+--------------------------------------------------------------------------------
+- Who created you? / How were you made? / How were u created?
+  I am Gautam Sarraf's AI Portfolio Assistant, built by Gautam Sarraf using Python, FastAPI, and the Google Gemini API (gemini-2.5-flash for response generation, gemini-embedding-2 for semantic vector search).
+- What kind of questions do you answer? / What questions can you answer? / What kid of question u answer?
+  I answer questions about Gautam Sarraf's professional profile, including his education, technical skills, projects (such as Resume Analyzer, PDF Chatbot, KYC Automation, OT Scheduler, etc.), experience, certifications, and contact links.
 ================================================================================
+
