@@ -1,4 +1,6 @@
 import os
+import hashlib
+import json
 import numpy as np
 from dotenv import load_dotenv
 from google import genai
@@ -56,18 +58,62 @@ def cosine_similarity(v1, v2):
 portfolio_chunks = []
 portfolio_embeddings = []
 
+CACHE_PATH = "doc/portfolio_cache.json"
+INFO_PATH = "doc/gautam_sarraf_info.txt"
+
+
+def get_file_hash(filepath: str) -> str:
+    hasher = hashlib.md5()
+    with open(filepath, "rb") as f:
+        buf = f.read()
+        hasher.update(buf)
+    return hasher.hexdigest()
+
 
 def initialize_portfolio():
     global portfolio_chunks, portfolio_embeddings
-    if not portfolio_chunks:
-        print("Loading portfolio data...")
-        portfolio_text = get_portfolio_context()
-        portfolio_chunks = chunk_text(portfolio_text)
-        portfolio_embeddings = [
-            embed_text(chunk)
-            for chunk in portfolio_chunks
-        ]
-        print(f"Loaded {len(portfolio_chunks)} chunks.")
+    if portfolio_chunks:
+        return
+
+    current_hash = get_file_hash(INFO_PATH)
+
+    # Try to load from cache
+    if os.path.exists(CACHE_PATH):
+        try:
+            with open(CACHE_PATH, "r", encoding="utf-8") as f:
+                cache_data = json.load(f)
+            if cache_data.get("hash") == current_hash:
+                print("Loading portfolio data from cache...")
+                portfolio_chunks = cache_data["chunks"]
+                portfolio_embeddings = [
+                    np.array(emb) for emb in cache_data["embeddings"]
+                ]
+                print(f"Loaded {len(portfolio_chunks)} chunks from cache.")
+                return
+        except Exception as e:
+            print(f"Failed to load cache: {e}. Regenerating...")
+
+    # Cache miss or hash mismatch: regenerate
+    print("Loading portfolio data and generating embeddings...")
+    portfolio_text = get_portfolio_context()
+    portfolio_chunks = chunk_text(portfolio_text)
+    portfolio_embeddings = [
+        embed_text(chunk)
+        for chunk in portfolio_chunks
+    ]
+
+    # Save to cache
+    try:
+        cache_data = {
+            "hash": current_hash,
+            "chunks": portfolio_chunks,
+            "embeddings": [emb.tolist() for emb in portfolio_embeddings],
+        }
+        with open(CACHE_PATH, "w", encoding="utf-8") as f:
+            json.dump(cache_data, f, indent=2)
+        print("Embeddings cached successfully.")
+    except Exception as e:
+        print(f"Failed to save cache: {e}")
 
 
 def retrieve_context(
@@ -108,6 +154,31 @@ def retrieve_context(
     return "\n\n".join(contexts)
 
 
+def generate_response_with_fallback(prompt: str) -> str:
+    models_to_try = [
+        "gemma-4-31b-it",
+        "gemma-4-26b-a4b-it",
+        "gemini-2.5-flash"
+    ]
+
+    last_error = None
+    for model_name in models_to_try:
+        try:
+            print(f"Attempting response generation with model: {model_name}...")
+            response = client.models.generate_content(
+                model=model_name,
+                contents=prompt
+            )
+            print(f"Successfully generated response with model: {model_name}")
+            return response.text
+        except Exception as e:
+            print(f"Model {model_name} failed: {e}")
+            last_error = e
+
+    # If all models fail, raise the last exception
+    raise last_error
+
+
 def ask_portfolio_bot(
     question: str,
     chat_history: list = None
@@ -146,10 +217,5 @@ User Question:
 {question}
 """
 
-    response = client.models.generate_content(
-        model="gemini-2.5-flash",
-        contents=prompt
-    )
-
-    return response.text
+    return generate_response_with_fallback(prompt)
     
