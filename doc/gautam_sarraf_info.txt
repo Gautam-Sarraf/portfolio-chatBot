@@ -1,0 +1,207 @@
+================================================================================
+GAUTAM SARRAF - PROFESSIONAL PROFILE & KNOWLEDGE BASE FOR CHATBOTS
+================================================================================
+
+This document contains a comprehensive, highly-structured knowledge base detailing
+the skills, experience, projects, education, and credentials of Gautam Sarraf.
+It is optimized for ingestion by RAG pipelines, LLM prompts, and system prompts.
+
+--------------------------------------------------------------------------------
+1. CORE IDENTITY & BIO
+--------------------------------------------------------------------------------
+- Full Name: Gautam Sarraf
+- Professional Roles: Full Stack Developer | AI Systems Engineer | Backend Architect | Python Automation Developer
+- Core Traits: Problem Solver, Team Player, Fast Learner, Detail-Oriented, Self-Motivated, Creative
+- Location: Birgunj, Nepal
+- Brief Bio: Gautam Sarraf is a motivated, detail-oriented developer and systems engineer with a strong foundation in full-stack development and artificial intelligence systems. He bridges the gap between deep learning model interfaces (LLMs, embeddings) and robust, scalable backend architectures. He has built several production-ready scheduling engines, real-time collaboration suites, web scraping automation flows, and conversational RAG pipelines.
+
+--------------------------------------------------------------------------------
+2. CONTACT & LINKS
+--------------------------------------------------------------------------------
+- Email: gautam.sarraf_cs22@gla.ac.in
+- GitHub: https://github.com/gautam-sarraf
+- LinkedIn: https://linkedin.com/in/gautam-sarraf
+- Portfolio Website: Gautam's Interactive 3D HUD Portfolio
+
+--------------------------------------------------------------------------------
+3. EDUCATION & ACADEMICS
+--------------------------------------------------------------------------------
+- University: GLA University, Mathura, Uttar Pradesh, India
+- Degree: Bachelor of Technology (B.Tech) in Computer Science and Engineering
+- Graduation Timeline: 2022 - May 2026 (Expected)
+- Academic Standing: Dean's List
+- Cumulative Grade Metric (CPI / GPA): 7.63 / 10.0
+- Core Coursework: Data Structures and Algorithms (DSA), Operating Systems (OS), Software Engineering (SE), Web Development, System Engineering fundamentals, Database Management Systems (SQL).
+
+--------------------------------------------------------------------------------
+4. KEY STATS & METRICS
+--------------------------------------------------------------------------------
+- Years of Programming Experience: 3+ Years (Active since 2022)
+- Projects Completed: 15+ (Including both production applications & self-directed systems)
+- Technologies Utilized/Mastered: 20+
+- AI/LLM Applications Deployed: 5
+- API Integrations Completed: 25+
+- Active GitHub Repositories: 20+ (Across public and private projects)
+
+--------------------------------------------------------------------------------
+5. SKILLS & PROFICIENCY INVENTORY
+--------------------------------------------------------------------------------
+
+A. FRONTEND ENGINEERING
+- React.js (88% Proficiency): Specializes in custom React hooks, global state management, Context API, responsive UI design, interactive 2D/3D canvas rendering, Framer Motion layouts, and low-latency state updates.
+- Next.js: Component rendering, SEO best practices, page routing, server-side configurations.
+- TypeScript (80% Proficiency): Strict interface typing, compiling safety, data shape definitions, payload validation.
+- Tailwind CSS & Vanilla CSS: Modern aesthetics (glassmorphism, dark mode schemes, custom grid timelines).
+- JavaScript (ES6+), HTML5, Semantic Web, CSS3.
+
+B. BACKEND ENGINEERING & AUTOMATION
+- Python (84% Proficiency): Principal language for core backend architectures, data processing scripts, automation utilities, scraping networks, and machine learning pipelines.
+- FastAPI (78% Proficiency): Asynchronous REST API design, ASGI configuration, OpenAPI automated docs, low-latency microservices.
+- Node.js & Express.js: RESTful services, middleware stacks, JSON routing, multi-user gateways.
+- Automation & Scraping: Puppeteer (JS) and Selenium/Playwright/Scrapy (Python). Custom scraping tools with robust Cloudflare & CAPTCHA evasion techniques.
+- Real-time & Sockets: Socket.io, WebSockets (handling active token streams, low-latency data syncing).
+- Networking Protocols: WebRTC (peer-to-peer audio calls and live video streaming meshes).
+
+C. ARTIFICIAL INTELLIGENCE & LLM ORCHESTRATION
+- OpenAI API (85% Proficiency): Embedding vectors, prompt fine-tuning, function calling, chat models (GPT-4), stream responses.
+- LangChain (78% Proficiency): RAG (Retrieval-Augmented Generation), custom agent action loops, memory chains, document splitting & loading.
+- Vector Databases: ChromaDB, Pinecone, FAISS (semantic similarity searching, index optimization).
+- NLP (Natural Language Processing): Text chunking, PDF section-parsing, semantic clustering.
+
+D. DATABASES & CLOUD DEPLOYMENT
+- PostgreSQL: Relational constraints, indexing, transactions, shift-scheduling grids.
+- MongoDB (80% Proficiency): Horizontal scale, document storage, real-time message backlogs, metadata sheets.
+- Redis: Key-value store, caching, Pub/Sub channels for state sync.
+- Docker (68% Proficiency): Multi-stage Dockerfiles, Docker Compose, bundling scrapers and servers in identical runtime containers.
+- AWS (70% Proficiency): Cloud instances, storage buckets (S3), content delivery networks (CDN).
+- Git & GitHub: Version control, team pull requests, pipeline integrations.
+
+--------------------------------------------------------------------------------
+6. DETAILED PROJECTS PORTFOLIO
+--------------------------------------------------------------------------------
+
+1. Resume Analyzer AI (ATS Optimization Pipeline)
+   - Objective/Subtitle: ATS Optimization Pipeline
+   - Description: AI-driven analysis engine that parses user-uploaded resumes, analyzes skill alignment against job specifications, and delivers ATS (Applicant Tracking System) ranking improvements.
+   - Core Problem: Recruiters suffer overhead review times; qualified applicants are auto-rejected by keyword filters.
+   - Tech Stack: Python, FastAPI, OpenAI API, FAISS, NLP, React
+   - Architecture: PDF Extractor -> FastAPI Node -> OpenAI Embeddings -> Vector Similarity Score -> ATS Report Generator
+   - Technical Challenges: Handling multi-column, nested PDF structures without losing layout and context.
+   - Impact & Results: Boosted candidate selection matching accuracy by 44% and reduced ATS drop-offs.
+   - GitHub Link: https://github.com/gautam-sarraf
+
+2. PDF Chatbot RAG (Semantic Doc Q&A System)
+   - Objective/Subtitle: Semantic Doc Q&A System
+   - Description: A Retrieval-Augmented Generation chatbot enabling users to upload massive PDF books and query them in natural language, receiving responses with precise source attribution.
+   - Core Problem: Static search models cannot parse contextual queries, forcing users to manually scan thousands of pages.
+   - Tech Stack: Python, OpenAI, LangChain, ChromaDB, FastAPI, React
+   - Architecture: PDF Chunking -> OpenAI Ada -> Pinecone/ChromaDB -> RAG Context Fetcher -> GPT-4 Response Stream
+   - Technical Challenges: Suppressing model hallucinations on niche, proprietary documents and tuning document chunk overlaps.
+   - Impact & Results: Instant context-aware document queries with 99.1% factual retrieval accuracy.
+   - GitHub Link: https://github.com/gautam-sarraf
+
+3. CP-KYC Automation (AI Agent Verification)
+   - Objective/Subtitle: AI Agent Verification
+   - Description: Enterprise compliance agent that scrapes public database registries to verify corporate registrations automatically.
+   - Core Problem: Manual search across international data sources takes days, leading to client onboarding delays.
+   - Tech Stack: Python, FastAPI, Puppeteer, PostgreSQL, Docker, REST API
+   - Architecture: Web Agent -> Puppeteer Node -> OCR Parser -> Risk Analysis Agent -> Approval Dashboard
+   - Technical Challenges: Overcoming anti-scraping systems (Cloudflare, CAPTCHA blocks) on government websites.
+   - Impact & Results: Reduced corporate KYC validation timeline from 48 hours to under 3 minutes.
+   - GitHub Link: https://github.com/gautam-sarraf
+
+4. OT Scheduler Platform (Shift Allocation Engine)
+   - Objective/Subtitle: Shift Allocation Engine
+   - Description: Intelligent shift allocation software matching rosters with staff requirements, constraints, and histories.
+   - Core Problem: Manual planning leads to compliance violations, shift conflicts, and uneven overtime allocation.
+   - Tech Stack: React, TypeScript, Node.js, Express, PostgreSQL, Tailwind
+   - Architecture: Constraint Solver Node -> Express JS -> PostgreSQL -> Roster Grid UI
+   - Technical Challenges: Writing algorithms that fulfill 15+ concurrent rostering limits while maintaining equity.
+   - Impact & Results: Zero scheduling conflicts across 3 separate company divisions.
+   - GitHub Link: https://github.com/gautam-sarraf
+
+5. AI Chat Application (Real-time AI Assistant)
+   - Objective/Subtitle: Real-time AI Assistant
+   - Description: Socket-enabled client dashboard connecting users directly to customized LLM agent channels with conversation memory.
+   - Core Problem: Generic chat wrappers fail at state persistence, branch histories, and multi-user message distribution.
+   - Tech Stack: Next.js, TypeScript, WebSockets, Redis, MongoDB, OpenAI API
+   - Architecture: React Client -> WS Gateway -> Redis PubSub -> OpenAI Agent -> MongoDB Memory store
+   - Technical Challenges: Handling high token streams over active WS lines without causing UI/dashboard freeze-ups.
+   - Impact & Results: Smooth real-time chat with latency below 180ms.
+   - GitHub Link: https://github.com/gautam-sarraf
+
+6. TeamSphere Hub (MERN Collaborative Suite)
+   - Objective/Subtitle: MERN Collaborative Suite
+   - Description: Collaboration suite with WebSockets, peer-to-peer audio calls, whiteboard sharing, and file logs.
+   - Core Problem: Disjointed tooling ecosystems (separate chat, board, call tools) decrease productivity.
+   - Tech Stack: MongoDB, Express, React, Node.js, Socket.io, WebRTC
+   - Architecture: React Gateway -> Express API -> Socket.io Server -> WebRTC Mesh -> MongoDB
+   - Technical Challenges: Synchronizing canvas coordinates in real-time for dozens of concurrent peer whiteboard users.
+   - Impact & Results: Consolidated team assets and communication into a single unified workspace portal.
+   - GitHub Link: https://github.com/Gautam-Sarraf/TeamSphere
+
+7. Marketplace Platform (Full Stack Storefront)
+   - Objective/Subtitle: Full Stack Storefront
+   - Description: High-performance e-commerce platform with search clustering, product metrics, and payment checkouts.
+   - Core Problem: Slow catalog indexing and sluggish database queries reduce checkout conversion rates under high load.
+   - Tech Stack: React, Node.js, Express, MongoDB, Stripe API, Redux
+   - Architecture: Next.js Frontend -> Node API -> ElasticSearch Cluster -> Stripe Node -> MongoDB
+   - Technical Challenges: Setting up payment webhooks to securely resolve concurrent inventory race conditions.
+   - GitHub Link: https://github.com/gautam-sarraf
+
+8. GGs Forex Board (Exchange Rates Tracker)
+   - Objective/Subtitle: Exchange Rates Tracker
+   - Description: Currency analytics dashboard showing exchange rate changes, analytics, and alerts.
+   - Core Problem: Sluggish rate pulls and static charts impede real-time financial trading decisions.
+   - Tech Stack: React, JavaScript, Chart.js, REST API, CSS3
+   - Architecture: React Frontend -> Forex API -> Chart.js renderer -> Live Alert Hook
+   - Technical Challenges: Redrawing canvas charts when loading years of historical currency records on mobile displays.
+   - GitHub Link: https://github.com/gautam-sarraf
+
+9. PMCH Platform (Healthcare Admin System)
+   - Objective/Subtitle: Healthcare Admin System
+   - Description: Medical administration portal managing patient intake charts, physician scheduling, and clinical routes.
+   - Core Problem: Hospital intake suffers from cluttered user interfaces, causing operational bottlenecks.
+   - Tech Stack: React, TypeScript, Tailwind, Node.js, MongoDB
+   - Architecture: React Core -> Node Gateway -> MongoDB Hospital cluster -> Admin Shield
+   - Technical Challenges: Adhering to medical compliance schemas and ensuring atomic record updates across hospital wings.
+   - GitHub Link: https://github.com/gautam-sarraf
+
+--------------------------------------------------------------------------------
+7. CERTIFICATIONS & PROFESSIONAL CREDENTIALS
+--------------------------------------------------------------------------------
+- freeCodeCamp: "Back End Development & APIs" (Credential covers Express, Node, MongoDB, and Mongoose API construction)
+- Coding Blocks: "Full Stack Web Development" (Comprehensive training covering frontend, backend, databases, and server configurations)
+- freeCodeCamp: "Quality Assurance" (Covers software testing frameworks, assertion libraries, and API auditing)
+
+--------------------------------------------------------------------------------
+8. PROFESSIONAL EXPERIENCE HISTORY
+--------------------------------------------------------------------------------
+
+A. Web Developer Intern | Webninjaz Technologies
+- Duration: September 2025 - Present (Active)
+- Description: Develop and optimize responsive web portals, establish dynamic REST API endpoints, and design AI automation workflows.
+- Key Achievements:
+  * Designed and built responsive client UIs using React and Next.js, elevating multi-device user engagement.
+  * Connected REST APIs to create dynamic workflows and flawless data streams across client/server layers.
+  * Formulated Python-based scheduling and automation routines, slashing manual task overhead by 60%.
+  * Engineered data scraping pipelines to retrieve and format structured records from target databases.
+  * Deployed FastAPI-based backend applications to support intelligent data parsing and automate operations.
+  * Cooperated with core developers to test, audit, debug, and deploy apps across development cycles.
+
+B. Full Stack Development Training | JOVAC (GLA University)
+- Duration: June 2024 - July 2024 (Completed)
+- Description: Built web modules, integrated database configurations, and established version-control structures.
+- Key Achievements:
+  * Programmed interactive web applications using JavaScript, Node.js, and HTML/CSS.
+  * Constructed backend API nodes and integrated them with frontend user interfaces.
+  * Led debug protocols to address runtime application errors, raising stability.
+  * Collaborated with peer training developers using Git and GitHub workflows.
+
+C. Systems & Computer Science Track | GLA University
+- Duration: 2022 - May 2026 (Ongoing)
+- Key Achievements:
+  * Maintained cumulative CPI of 7.63 on B.Tech CSE track.
+  * Mastered topics: Data Structures, Analysis of Algorithms, Operating Systems, Software Engineering, Database Systems.
+  * Wrote several individual full stack pages and automation helper scripts.
+================================================================================
