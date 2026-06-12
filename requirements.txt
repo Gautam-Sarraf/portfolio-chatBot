@@ -4,4 +4,3 @@ numpy
 python-dotenv
 google-genai
 uvicorn
-genai
