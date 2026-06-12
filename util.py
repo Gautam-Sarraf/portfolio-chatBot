@@ -53,22 +53,21 @@ def cosine_similarity(v1, v2):
     )
 
 
-print("Loading portfolio data...")
+portfolio_chunks = []
+portfolio_embeddings = []
 
-portfolio_text = get_portfolio_context()
 
-portfolio_chunks = chunk_text(
-    portfolio_text
-)
-
-portfolio_embeddings = [
-    embed_text(chunk)
-    for chunk in portfolio_chunks
-]
-
-print(
-    f"Loaded {len(portfolio_chunks)} chunks."
-)
+def initialize_portfolio():
+    global portfolio_chunks, portfolio_embeddings
+    if not portfolio_chunks:
+        print("Loading portfolio data...")
+        portfolio_text = get_portfolio_context()
+        portfolio_chunks = chunk_text(portfolio_text)
+        portfolio_embeddings = [
+            embed_text(chunk)
+            for chunk in portfolio_chunks
+        ]
+        print(f"Loaded {len(portfolio_chunks)} chunks.")
 
 
 def retrieve_context(
@@ -76,6 +75,7 @@ def retrieve_context(
     top_k: int = 3
 ):
 
+    initialize_portfolio()
     query_embedding = embed_text(query)
 
     scores = []
@@ -152,3 +152,4 @@ User Question:
     )
 
     return response.text
+    
