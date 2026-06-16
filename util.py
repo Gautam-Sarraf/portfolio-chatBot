@@ -156,9 +156,9 @@ def retrieve_context(
 
 def generate_response_with_fallback(prompt: str) -> str:
     models_to_try = [
+        "gemini-2.5-flash",
         "gemma-4-31b-it",
-        "gemma-4-26b-a4b-it",
-        "gemini-2.5-flash"
+        "gemma-4-26b-a4b-it"
     ]
 
     last_error = None
@@ -222,9 +222,9 @@ User Question:
 
 def generate_response_stream_with_fallback(prompt: str):
     models_to_try = [
+        "gemini-2.5-flash",
         "gemma-4-31b-it",
-        "gemma-4-26b-a4b-it",
-        "gemini-2.5-flash"
+        "gemma-4-26b-a4b-it"
     ]
 
     last_error = None
@@ -242,7 +242,8 @@ def generate_response_stream_with_fallback(prompt: str):
             except StopIteration:
                 return
             
-            yield first_chunk.text
+            if first_chunk.text:
+                yield first_chunk.text
             for chunk in stream_iter:
                 if chunk.text:
                     yield chunk.text
