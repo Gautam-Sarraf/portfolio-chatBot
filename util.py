@@ -218,4 +218,80 @@ User Question:
 """
 
     return generate_response_with_fallback(prompt)
+
+
+def generate_response_stream_with_fallback(prompt: str):
+    models_to_try = [
+        "gemma-4-31b-it",
+        "gemma-4-26b-a4b-it",
+        "gemini-2.5-flash"
+    ]
+
+    last_error = None
+    for model_name in models_to_try:
+        try:
+            print(f"Attempting streaming response generation with model: {model_name}...")
+            response = client.models.generate_content_stream(
+                model=model_name,
+                contents=prompt
+            )
+            
+            stream_iter = iter(response)
+            try:
+                first_chunk = next(stream_iter)
+            except StopIteration:
+                return
+            
+            yield first_chunk.text
+            for chunk in stream_iter:
+                if chunk.text:
+                    yield chunk.text
+            print(f"Successfully generated streaming response with model: {model_name}")
+            return
+        except Exception as e:
+            print(f"Model {model_name} failed for streaming: {e}")
+            last_error = e
+
+    raise last_error
+
+
+def ask_portfolio_bot_stream(
+    question: str,
+    chat_history: list = None
+):
+    context = retrieve_context(
+        question
+    )
+
+    history_text = ""
+
+    if chat_history:
+        for msg in chat_history:
+            history_text += (
+                f"{msg['role']}: "
+                f"{msg['content']}\n"
+            )
+
+    prompt = f"""
+You are Gautam Sarraf's AI Portfolio Assistant.
+
+Rules:
+- Answer as if you represent Gautam.
+- Be professional and concise.
+- Only use the provided context.
+- If information is unavailable,
+  say "I don't have information about that."
+
+Chat History:
+{history_text}
+
+Portfolio Context:
+{context}
+
+User Question:
+{question}
+"""
+
+    yield from generate_response_stream_with_fallback(prompt)
+
     
